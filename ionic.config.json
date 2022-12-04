@@ -1,0 +1,7 @@
+{
+  "name": "ig-recipes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,22 @@
+ion-card-header.ios{
+  display: flex;
+  flex-flow: column-reverse;
+}
+ion-card{
+background-color: rgba(255, 140, 0, 0.6);
+}
+ion-card{
+  color: black;
+}
+ion-card-header ion-button{
+  color: white;
+  --background: grey;
+}
+.showRecipe{
+--background: #E1306C;
+}
+.fav-button{
+  position: absolute;
+  top: 0;
+  right: 0;
+}

@@ -1,17 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Mis Recetas
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">Mis Recetas</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content class="ion-padding" [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <ng-container *ngFor="let recipe of recipes">
+  <ion-card  color="primary"  (click)="showDetails(recipe)">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-button *ngFor="let tag of recipe.tags">{{tag}}</ion-button>
+      </ion-card-subtitle>
+        <ion-card-title>{{recipe.name}}
+          <div *ngIf="recipe.fav===true; then favIcon else noFavIcon;"></div>
+           <ng-template #favIcon><ion-icon (click)="removeFav($event, recipe)" class="fav-button" name="star"></ion-icon></ng-template>
+           <ng-template #noFavIcon><ion-icon (click)="addFav($event, recipe)" class="fav-button" name="star-outline"></ion-icon></ng-template>
+        </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+  </ion-card>
+</ng-container>
 </ion-content>

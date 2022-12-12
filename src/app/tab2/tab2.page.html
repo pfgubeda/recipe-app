@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Añadir Receta
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,26 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Añadir Receta</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-item>
+    <ion-label position="floating">Titulo de la receta</ion-label>
+    <ion-input [clearInput]="true" type="text" [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Url de la publicación de Instagram</ion-label>
+    <ion-input [clearInput]="true" type="text" [(ngModel)]="linkIg"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Etiquetas</ion-label>
+    <ion-input [clearInput]="true" type="text" [(ngModel)]="tagToAdd" (keydown.enter)="addTag()"></ion-input>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let tag of tags">
+      <ion-label>{{tag}}</ion-label>
+      <ion-button (click)="removeTag(tag)"><ion-icon name="remove-circle-outline"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="addRecipe()">Añadir receta</ion-button>
 </ion-content>

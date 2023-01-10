@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Recipe } from '../models/recipe';
 import { StorageService } from '../storage.service';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { DetailPage } from '../detail/detail.page';
 
 @Component({
   selector: 'app-tab1',
@@ -18,7 +19,8 @@ export class Tab1Page {
   constructor(
     private storageService: StorageService,
     private http: HttpClient,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private modalController: ModalController
   ) {}
   public async ngOnInit() {
     this.recipes = await this.storageService.get('recipes');
@@ -38,13 +40,29 @@ export class Tab1Page {
   }
   handleRefresh(event: any) {
     setTimeout(() => {
-      window.location.reload();
+      this.ngOnInit();
       event.target.complete();
     }, 2000);
   }
-  showDetails(recipe: Recipe) {
-    alert(recipe.name);
+
+
+
+
+
+  async showDetails(recipe: Recipe) {
+    const modal = await this.modalController.create({
+      component: DetailPage,
+      componentProps: {
+        recipe: recipe,
+      },
+    });
+    return await modal.present();
   }
+
+
+
+
+
   removeFav($event: MouseEvent, recipe: Recipe) {
     $event.stopPropagation();
     this.recipes.forEach((r) => {

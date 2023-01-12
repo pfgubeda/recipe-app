@@ -11,10 +11,6 @@ import { DetailPage } from '../detail/detail.page';
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page {
-  deleteAll() {
-    this.storageService.deleteAll('recipes');
-    window.location.reload();
-  }
   recipes: Recipe[] = [];
   constructor(
     private storageService: StorageService,
@@ -22,6 +18,9 @@ export class Tab1Page {
     private toastController: ToastController,
     private modalController: ModalController
   ) {}
+  ionViewDidEnter(){
+    this.ngOnInit();
+  }
   public async ngOnInit() {
     this.recipes = await this.storageService.get('recipes');
     if (this.recipes == null) {
@@ -55,6 +54,9 @@ export class Tab1Page {
       componentProps: {
         recipe: recipe,
       },
+    });
+    modal.onDidDismiss().then((data) => {
+      this.ngOnInit();
     });
     return await modal.present();
   }

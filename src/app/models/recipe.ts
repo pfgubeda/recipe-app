@@ -3,6 +3,7 @@ export class Recipe {
   link: string;
   tags: string[];
   fav: boolean;
+  details: string;
 
 
   constructor(name: string, link: string, tags: string[], fav: boolean) {
@@ -10,5 +11,6 @@ export class Recipe {
     this.link = link;
     this.tags = tags;
     this.fav = fav;
+    this.details = "";
   }
 }

@@ -32,7 +32,6 @@ tagToAdd: any;
       }
       //TODO: get unique id from youtube url
       this.link = this.link.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
-      console.log(this.link);
       let recipe : Recipe = new Recipe(this.name, this.link , this.tags, false);
       recipes.push(recipe);
       this.storageService.set("recipes", recipes);

@@ -7,10 +7,24 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <div class="youtubeFrame">
+  <div class="youtubeFrame" *ngIf="isYoutubeVideo===true">
     <iframe width="400" height="250" [src]="videoUrl()" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
-
+  <div class="externalLink" *ngIf="isYoutubeVideo===false">
+    <a href="{{recipe?.link}}" target="_blank">{{recipe?.link}}</a>
+  </div>
+  <div class="tags">
+    <ion-button *ngFor="let tag of recipe?.tags">{{tag}}</ion-button>
+  </div>
+  <div class="details">
+    <ion-item>
+      <ion-label position="stacked">Detalles</ion-label>
+      <ion-textarea [(ngModel)]="detailsInput" enterkeyhint="done" inputmode="text" spellcheck="true" (ionBlur)="saveDetails()"  (keydown.enter)="saveDetails()"></ion-textarea>
+    </ion-item>
+  </div>
+  <div class="delete">
+    <ion-button color="danger" (click)="deleteRecipeAlert()">Eliminar</ion-button>
+  </div>
   </ion-content>
 
 

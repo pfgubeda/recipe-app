@@ -17,7 +17,9 @@ export class Tab3Page {
   constructor(private storageService: StorageService) {
     this.searchField = new FormControl('');
   }
-
+  ionViewDidEnter(){
+    this.ngOnInit();
+  }
   public async ngOnInit() {
     const searchTerm$ = this.searchField.valueChanges.pipe(
       startWith(this.searchField.value)

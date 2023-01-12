@@ -1,4 +1,25 @@
-<ion-tabs>
+<ion-content *ngIf="firstTime">
+  <ion-slides scrollbar="true">
+    <ion-slide>
+      <h1>Primer Tutorial</h1>
+      <p>En este tutorial aprenderás a crear una aplicación con Ionic 5 y Angular 9</p>
+    </ion-slide>
+    <ion-slide>
+      <h1>Segundo Tutorial</h1>
+      <p>En este tutorial aprenderás a crear una aplicación con Ionic 5 y Angular 9</p>
+    </ion-slide>
+    <ion-slide>
+      <h1>Tercer Tutorial</h1>
+      <p>En este tutorial aprenderás a crear una aplicación con Ionic 5 y Angular 9</p>
+    </ion-slide>
+    <ion-slide>
+      <h1>Fin Tutorial</h1>
+      <button (click)="click()">Next</button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+
+<ion-tabs *ngIf="!firstTime">
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="tab1">

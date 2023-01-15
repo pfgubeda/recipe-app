@@ -4,10 +4,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Inspiración</ion-title>
+      <ion-title size="large">{{meal.strMeal}}</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+    <div class="info">
+    <ion-img [src]="meal.strMealThumb"></ion-img>
+    <div class="youtubeFrame" *ngIf="isYoutubeVideo===true">
+      <iframe width="387" height="250" [src]="videoUrl()" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    </div>
 </ion-content>

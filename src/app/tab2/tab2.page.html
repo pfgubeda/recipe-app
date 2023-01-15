@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Añadir Receta
-    </ion-title>
+    <ion-title> Añadir Receta </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +10,7 @@
       <ion-title size="large">Añadir Receta</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="formularioInputs">
   <ion-item>
     <ion-label position="floating">Titulo de la receta</ion-label>
     <ion-input [clearInput]="true" type="text" [(ngModel)]="name"></ion-input>
@@ -22,14 +21,25 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Etiquetas</ion-label>
-    <ion-input [clearInput]="true" type="text" [(ngModel)]="tagToAdd" (keydown.enter)="addTag()"></ion-input>
+    <ion-input
+      [clearInput]="true"
+      type="text"
+      [(ngModel)]="tagToAdd"
+      (keydown.enter)="addTag()"
+    ></ion-input>
   </ion-item>
   <ion-list>
     <ion-item *ngFor="let tag of tags">
       <ion-label>{{tag}}</ion-label>
-      <ion-button (click)="removeTag(tag)"><ion-icon name="remove-circle-outline"></ion-icon></ion-button>
+      <ion-button (click)="removeTag(tag)"
+        ><ion-icon name="remove-circle-outline" style="color: red;"></ion-icon
+      ></ion-button>
     </ion-item>
   </ion-list>
-  <ion-button (click)="addRecipe()">Añadir receta</ion-button>
-
+</div>
+  <ion-row class="ion-align-items-center">
+    <ion-col size="12" class="ion-text-center">
+      <ion-button (click)="addRecipe()">Añadir receta</ion-button>
+    </ion-col>
+  </ion-row>
 </ion-content>

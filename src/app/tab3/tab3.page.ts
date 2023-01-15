@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Recipe } from '../models/recipe';
 import { StorageService } from '../storage.service';
 import { startWith } from 'rxjs/operators';
+import { AlertController, ModalController } from '@ionic/angular';
+import { DetailPage } from '../detail/detail.page';
 
 @Component({
   selector: 'app-tab3',
@@ -11,10 +13,11 @@ import { startWith } from 'rxjs/operators';
   styleUrls: ['tab3.page.scss'],
 })
 export class Tab3Page {
+
   searchField: FormControl;
   recipes: Recipe[] = [];
   recipesSearch: Recipe[] = [];
-  constructor(private storageService: StorageService) {
+  constructor(private storageService: StorageService, private modalController: ModalController,  private alertController:AlertController) {
     this.searchField = new FormControl('');
   }
   ionViewDidEnter(){
@@ -47,7 +50,18 @@ export class Tab3Page {
     });
   }
 
-  openRecipe(recipe: Recipe) {
-    throw new Error('Method not implemented.');
+  async openRecipe(recipe: Recipe) {
+    const modal = await this.modalController.create({
+      component: DetailPage,
+      componentProps: {
+        recipe: recipe,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      this.ngOnInit();
+    });
+    return await modal.present();
   }
+
+
 }

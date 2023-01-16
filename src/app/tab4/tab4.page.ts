@@ -67,9 +67,7 @@ export class Tab4Page implements OnInit {
     }
     console.log(this.savedRecipe);
   }
-  ionViewDidEnter() {
-    this.ngOnInit();
-  }
+
   videoUrl() {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(
       this.meal.strYoutube

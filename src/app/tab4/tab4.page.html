@@ -1,6 +1,17 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Inspiración</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="ngOnInit()">
+        <ion-icon name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="saveRecipe()">
+        <ion-icon *ngIf="!savedRecipe" name="bookmark-outline"></ion-icon>
+        <ion-icon *ngIf="savedRecipe" name="bookmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

@@ -26,13 +26,12 @@ tagToAdd: any;
     }
   async addRecipe() {
     if(this.name != null && this.name != "" && this.link != null && this.link != ""){
-      let recipes : Recipe[] = await this.storageService.get("recipes"); //ya es un objecto de ts no hace falta parsear :D
+      let recipes : Recipe[] = await this.storageService.get("recipes");
       if(recipes == null){
         recipes = [];
       }
-      //TODO: get unique id from youtube url
       this.link = this.link.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
-      let recipe : Recipe = new Recipe(this.name, this.link , this.tags, false);
+      let recipe : Recipe = new Recipe(this.name, this.link , this.tags, false, "");
       recipes.push(recipe);
       this.storageService.set("recipes", recipes);
       this.presentToast();

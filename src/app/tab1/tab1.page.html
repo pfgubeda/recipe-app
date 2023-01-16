@@ -17,7 +17,7 @@
     </ion-refresher-content>
   </ion-refresher>
   <ng-container *ngFor="let recipe of recipes">
-  <ion-card  color="primary" (click)="showDetails(recipe)">
+  <ion-card  color="primary" (click)="showDetails(recipe)" [ngStyle]="{'background-image': 'url('+recipe.url_image+')'}">
     <ion-card-header>
       <ion-card-subtitle>
         <ion-button *ngFor="let tag of recipe.tags">{{tag}}</ion-button>

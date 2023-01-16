@@ -24,6 +24,7 @@ export class DetailPage implements OnInit {
       this.isYoutubeVideo=true;
     }
     this.detailsInput=this.recipe?.details;
+    console.log(this.recipe);
   }
   async closeModal() {
     await this.modalController.dismiss();

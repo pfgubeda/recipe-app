@@ -21,7 +21,8 @@
       <ion-card-subtitle>
         <ion-button *ngFor="let tag of recipe.tags">{{tag}}</ion-button>
       </ion-card-subtitle>
-        <ion-card-title>{{recipe.name}}
+        <ion-card-title style="color: black;  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;">{{recipe.name}}
           <div *ngIf="recipe.fav===true; then favIcon else noFavIcon;"></div>
            <ng-template #favIcon><ion-icon (click)="removeFav($event, recipe)" class="fav-button" name="star"></ion-icon></ng-template>
            <ng-template #noFavIcon><ion-icon (click)="addFav($event, recipe)" class="fav-button" name="star-outline"></ion-icon></ng-template>

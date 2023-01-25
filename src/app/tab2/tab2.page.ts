@@ -13,7 +13,7 @@ export class Tab2Page {
 tags: string[] = [];
 
 name: any;
-link: any;
+link: string = "";
 tagToAdd: any;
 
   constructor(private storageService : StorageService, private toastController: ToastController) {}
@@ -30,7 +30,12 @@ tagToAdd: any;
       if(recipes == null){
         recipes = [];
       }
+      if(this.link.includes("https://www.youtube.com/watch?v=")){
       this.link = this.link.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
+      }
+      if(this.link.includes("https://youtu.be/")){
+      this.link = this.link.replace("https://youtu.be/", "https://www.youtube.com/embed/");
+      }
       let recipe : Recipe = new Recipe(this.name, this.link , this.tags, false, "");
       recipes.push(recipe);
       this.storageService.set("recipes", recipes);

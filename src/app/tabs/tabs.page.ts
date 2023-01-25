@@ -15,13 +15,17 @@ firstTime: boolean = true;
     this.storageService.get('firstTime').then((val) => {
       if (val == null) {
         this.firstTime = true;
-        this.storageService.set('firstTime', false);
       } else {
         this.firstTime = false;
       }
     });
   }
   click(){
-    this.ngOnInit();
+    this.storageService.get('firstTime').then((val) => {
+      this.firstTime = false;
+      if (val == null) {
+        this.storageService.set('firstTime', false);
+      }
+    });
   }
 }
